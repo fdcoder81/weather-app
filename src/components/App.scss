@@ -27,8 +27,7 @@ h1 {
 }
 
 .subs {
-  color: blue;
-  font-size: 1.2rem;
+  color: rgb(76, 0, 255);
 }
 
 .weather-box {
@@ -57,11 +56,6 @@ h1 {
     font-weight: 900;
     margin-bottom: 1.2rem;
   }
-
-  &__hum {
-    font-size: 1.5rem;
-    padding-bottom: 2rem;
-  }
 }
 
 form {
@@ -88,3 +82,46 @@ form {
     color: white;
   }
 }
+
+/* MEDIA QUERIES */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .weather-box {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  input[type="text"] {
+    max-width: 200px;
+    font-size: 1rem;
+  }
+
+  input[type="submit"] {
+    max-width: 90px;
+    font-size: 1rem;
+  }
+
+  .weather-box {
+    &__city {
+      font-size: 1.5rem;
+    }
+
+    &__desc {
+      font-size: 1rem;
+    }
+  }
+}
+
+/* @media only screen and (min-width: 1200px) {
+  input[type="text"] {
+    max-width: 250px;
+    font-size: 1.2rem;
+  }
+
+  input[type="submit"] {
+    max-width: 100px;
+    font-size: 1.2rem;
+  }
+}
+ */

@@ -1,8 +1,11 @@
 import React from "react";
 import ReactAnimatedWeather from "react-animated-weather";
+import getIcon from "../utils/getIcon";
 
-const WeatherCard = props => {
-  const city = props.cityWeather;
+const WeatherCard = ({ cityInfo, cityWeather }) => {
+  if (cityWeather.length) {
+    console.log(cityWeather[0]);
+  }
 
   const defaults = {
     icon: "CLEAR_DAY",
@@ -11,20 +14,29 @@ const WeatherCard = props => {
     animate: true
   };
 
-  return (
-    <div>
-      <h2 className="weather-box__city">London, GB</h2>
-      <ReactAnimatedWeather
-        icon={defaults.icon}
-        color={defaults.color}
-        size={defaults.size}
-        animate={defaults.animate}
-      />
-      <p className="weather-box__temp">19 °C</p>
-      <p className="weather-box__desc">Light Rain</p>
-      <p className="weather-box__hum">Humidity : 73%</p>
-    </div>
-  );
+  if (cityInfo.length && cityWeather.length) {
+    let iconID = getIcon(cityWeather[0].WeatherIcon);
+
+    return (
+      <div>
+        <h2 className="weather-box__city">
+          {cityInfo[0].EnglishName} , {cityInfo[0].Country.ID}
+        </h2>
+        <ReactAnimatedWeather
+          icon={iconID}
+          color={defaults.color}
+          size={defaults.size}
+          animate={defaults.animate}
+        />
+        <p className="weather-box__temp">
+          {cityWeather[0].Temperature.Metric.Value} °C
+        </p>
+        <p className="weather-box__desc">{cityWeather[0].WeatherText}</p>
+      </div>
+    );
+  } else {
+    return <div>SPINNER</div>;
+  }
 };
 
 export default WeatherCard;

@@ -14,6 +14,7 @@ class AddCity extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addCity(this.state.city);
+    this.setState({ city: "" });
   };
 
   render() {

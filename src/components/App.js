@@ -8,8 +8,13 @@ const KEY = "mGM3TdJw2ez0YnuGGXfpk2Qo3sZg8iD7";
 
 class App extends React.Component {
   state = {
+    cityInfo: [],
     cityWeather: []
   };
+
+  componentDidMount() {
+    this.addCity("London");
+  }
 
   addCity = e => {
     weatherLocation
@@ -17,17 +22,21 @@ class App extends React.Component {
         params: { apikey: KEY, q: e }
       })
       .then(response => {
-        this.getWeatherData(response.data[0]);
+        let locationInfo = response.data[0];
+        let data = [{ ...locationInfo }];
+        this.setState({ cityInfo: data });
+        this.getWeatherData(locationInfo.Key);
       });
   };
 
-  getWeatherData = locationData => {
+  getWeatherData = locationKey => {
     weatherData
-      .get(locationData.Key, {
+      .get(locationKey, {
         params: { apikey: KEY }
       })
       .then(response => {
-        let data = [{ ...locationData }, { ...response.data[0] }];
+        let weatherData = response.data[0];
+        let data = [{ ...weatherData }];
         this.setState({ cityWeather: data });
       });
   };
@@ -38,10 +47,12 @@ class App extends React.Component {
         <h1 className="text-center">Weather App</h1>
         <div className="subs">
           <p>Created by Carlo Anselmi</p>
-          <p>Github source code</p>
         </div>
         <div className="weather-box">
-          <WeatherCard cityWeather={this.state.cityWeather} />
+          <WeatherCard
+            cityWeather={this.state.cityWeather}
+            cityInfo={this.state.cityInfo}
+          />
           <AddCity addCity={this.addCity} />
         </div>
       </div>
