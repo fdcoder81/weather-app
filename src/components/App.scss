@@ -31,6 +31,7 @@ h1 {
 }
 
 .weather-box {
+  display: flex;
   margin: 2rem auto;
   padding: 2rem;
   color: white;
@@ -39,33 +40,72 @@ h1 {
   border-radius: 5%;
   box-shadow: 0px 5px 20px 5px #57936a;
 
+  &__today {
+    padding-right: 2rem;
+    flex-grow: 2;
+  }
+
+  &__forecast {
+    flex-grow: 1;
+  }
+
+  .sidebar {
+    margin-top: 1.5rem;
+
+    &__box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border-bottom: 1px solid #57936a;
+    }
+
+    &__date {
+      display: flex;
+      flex-direction: column;
+      span:nth-child(1) {
+        font-weight: 800;
+      }
+    }
+
+    &__forecast {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+
+      span:nth-child(1) {
+        font-weight: 800;
+      }
+    }
+  }
+
   &__city {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 
   &__temp {
     font-size: 2.5rem;
     margin-top: 1.5rem;
-    margin-bottom: 1.2rem;
+    margin-bottom: 2rem;
   }
 
   &__desc {
     font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: 900;
-    margin-bottom: 1.2rem;
+    margin-bottom: 3rem;
   }
 }
 
 form {
   input {
-    font-size: 1.5rem;
-    height: 50px;
+    font-size: 1.2rem;
+    height: 35px;
   }
 
   input[type="text"] {
-    width: 340px;
+    width: 250px;
     border: none;
     outline: none;
     padding: 0.8rem;
@@ -74,7 +114,7 @@ form {
 
   input[type="submit"] {
     border-radius: 0 25px 25px 0;
-    width: 150px;
+    width: 80px;
     border: none;
     outline: none;
     cursor: pointer;
@@ -85,7 +125,7 @@ form {
 
 /* MEDIA QUERIES */
 
-@media (min-width: 1025px) and (max-width: 1280px) {
+/* @media (min-width: 1025px) and (max-width: 1280px) {
   .weather-box {
     width: 60%;
   }
@@ -112,10 +152,7 @@ form {
   }
 }
 
-/* 
-  ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px
-*/
+
 
 @media (min-width: 481px) and (max-width: 767px) {
   .weather-box {
@@ -138,10 +175,7 @@ form {
   }
 }
 
-/* 
-  ##Device = Most of the Smartphones Mobiles (Portrait)
-  ##Screen = B/w 320px to 479px
-*/
+
 
 @media (min-width: 320px) and (max-width: 480px) {
   h1 {
@@ -170,4 +204,4 @@ form {
       width: 30%;
     }
   }
-}
+} */

@@ -3,10 +3,6 @@ import ReactAnimatedWeather from "react-animated-weather";
 import getIcon from "../utils/getIcon";
 
 const WeatherCard = ({ cityInfo, cityWeather }) => {
-  if (cityWeather.length) {
-    console.log(cityWeather[0]);
-  }
-
   const defaults = {
     icon: "CLEAR_DAY",
     color: "white",
@@ -35,7 +31,7 @@ const WeatherCard = ({ cityInfo, cityWeather }) => {
       </div>
     );
   } else {
-    return <div>SPINNER</div>;
+    return <div>Loading</div>;
   }
 };
 

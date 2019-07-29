@@ -2,14 +2,20 @@ import React from "react";
 import "./App.scss";
 import AddCity from "./AddCity";
 import WeatherCard from "./WeatherCard";
-import { weatherLocation, weatherData } from "../api/weatherApi";
+import {
+  weatherLocation,
+  weatherData,
+  weatherForecast
+} from "../api/weatherApi";
+import Forecast from "./Forecast";
 
 const KEY = "mGM3TdJw2ez0YnuGGXfpk2Qo3sZg8iD7";
 
 class App extends React.Component {
   state = {
     cityInfo: [],
-    cityWeather: []
+    cityWeather: [],
+    cityForecast: []
   };
 
   componentDidMount() {
@@ -39,6 +45,16 @@ class App extends React.Component {
         let data = [{ ...weatherData }];
         this.setState({ cityWeather: data });
       });
+
+    weatherForecast
+      .get(locationKey, {
+        params: { apikey: KEY, metric: true }
+      })
+      .then(response => {
+        let weatherForecast = response.data.DailyForecasts;
+        let data = [...weatherForecast];
+        this.setState({ cityForecast: data });
+      });
   };
 
   render() {
@@ -49,11 +65,16 @@ class App extends React.Component {
           <p>Created by Carlo Anselmi</p>
         </div>
         <div className="weather-box">
-          <WeatherCard
-            cityWeather={this.state.cityWeather}
-            cityInfo={this.state.cityInfo}
-          />
-          <AddCity addCity={this.addCity} />
+          <div className="weather-box__today">
+            <WeatherCard
+              cityWeather={this.state.cityWeather}
+              cityInfo={this.state.cityInfo}
+            />
+            <AddCity addCity={this.addCity} />
+          </div>
+          <div className="weather-box__forecast">
+            <Forecast cityForecast={this.state.cityForecast} />
+          </div>
         </div>
       </div>
     );
