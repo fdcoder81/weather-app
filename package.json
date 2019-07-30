@@ -2,6 +2,7 @@
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://fdcoder81.github.io/weather-app/",
   "dependencies": {
     "moment": "^2.24.0",
     "react": "^16.8.6",
