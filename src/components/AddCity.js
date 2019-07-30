@@ -13,7 +13,7 @@ class AddCity extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addCity(this.state.city);
+    this.props.addCity(this.state.city.toLowerCase());
     this.setState({ city: "" });
   };
 

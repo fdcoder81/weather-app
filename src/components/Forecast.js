@@ -21,7 +21,7 @@ const Forecast = ({ cityForecast }) => {
       let iconId = getIcon(data.Day.Icon);
 
       return (
-        <div className="sidebar__box">
+        <div className="sidebar__box" key={data.EpochDate}>
           <div className="sidebar__date">
             <span>{day}</span>
             <span>
@@ -52,8 +52,10 @@ const Forecast = ({ cityForecast }) => {
 
   return (
     <div>
-      <h2>Forecasts</h2>
-      <div className="sidebar">{template}</div>
+      <div className="sidebar">
+        <h2>Forecasts</h2>
+        {template}
+      </div>
     </div>
   );
 };
