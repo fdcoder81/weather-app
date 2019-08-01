@@ -6,4 +6,4 @@ A simple Weather App, mobile responsive, that shows the current weather and fore
 
 Fetching data using Axios from AccuWeather APIs
 
-Live demo : http:\\
+Live demo : https://fdcoder81.github.io/weather-app/
